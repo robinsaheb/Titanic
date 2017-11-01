@@ -22,7 +22,7 @@ import pandas as pd
 import pylab as plt
 import numpy as np
 
-df = pd.read_csv('/Users/sahebsingh/Documents/books/Mastering/Data/titanic data.csv')
+df = pd.read_csv('/Users/sahebsingh/Desktop/Projects/books/Mastering/Data/titanic data.csv')
 print(df.head())
 
 # Checking for null Values
