@@ -47,12 +47,14 @@ rect = ax.bar(passengers_survived.index.values.tolist(),
 ax.set_ylabel('No of Survivors')
 ax.set_xlabel('Total Number of Survivors based on class')
 plt.show()
+fig.savefig('figure1.png')
 
 # Plotting percentage of plots.
 
 plt.bar(survivor_percentage.index.values.tolist(), survivor_percentage, color = 'blue')
 plt.xlabel('Total Percent of Survivors Based on Class')
 plt.ylabel('Survivor Percentage')
+fig.savefig('figure2.png')
 plt.show()
 
 
@@ -80,7 +82,9 @@ print(female_passengers)
 plt.bar(1, female_passengers, width = 0.35)
 plt.bar(2, male_passengers, width = 0.35)
 plt.xlabel('Male vs Female')
+fig.savefig('figure3.png')
 plt.show()
+
 
 # Survivors based on gender and class
 
@@ -113,7 +117,9 @@ ax.set_xticks(index)
 xtickNames = ax.set_xticklabels(xTickMarks)
 plt.setp(xtickNames, fontsize=20)
 plt.legend()
+fig.savefig('figure8.png')
 plt.show()
+
 
 # Plotting by percentage on basis of Sex
 
@@ -131,7 +137,9 @@ ax.set_xticks(index)
 xtickNames = ax.set_xticklabels(xtickmarks)
 plt.setp(xtickNames, fontsize = 20)
 plt.legend()
+fig.savefig('figure4.png')
 plt.show()
+
 
 
 """ Distribution of Non Survivors among various classes who have Family Aboard """
@@ -169,7 +177,9 @@ ax.set_xticks(xtickmarks)
 xticknames = ax.set_xticklabels(xtickmarks)
 plt.setp(xticknames, fontsize = 20)
 plt.tight_layout()
+fig.savefig('figure5.png')
 plt.show()
+
 
 # Plotting percent of non-survivors
 
@@ -183,7 +193,9 @@ xtickmarks = non_survivors.index.values.tolist()
 ax.set_xticks(xtickmarks)
 xticknames = ax.set_xticklabels(xtickmarks)
 plt.setp(xticknames, fontsize = 20) 
+fig.savefig('figure6.png')
 plt.show()
+
 
 """ Following Observations are made:
     1) There are a lot of non-survivors in the third class 
@@ -226,14 +238,18 @@ print(total_passengers)
 plt.pie(total_passengers, labels = total_passengers.index.values.tolist(), 
         autopct='%1.1f%%', shadow=True, startangle=90)
 plt.title('Total Passengers in Different Age Group')
+plt.savefig('figure9.png')
 plt.show()
+
 
 # Plotting the pie percentage of Different Survivors of Age Group
 
 plt.pie(survivors_age, labels = survivors_age.index.values.tolist(),
         autopct = '%1.1f%%', shadow = True, startangle = 90)
 plt.title('Total Survivors in Different Age Groups')
+plt.savefig('figure7.png')
 plt.show()
+
 
 # Difference between Count and Sum
 
