@@ -260,6 +260,17 @@ plt.show()
 #count_1 = d_temp.count()
 #print(count_1)
 
+# Removing cabin, name and ticket
+
+df = df.drop(['Cabin', 'Ticket', 'Name'], axis = 1) # As they do not provide any additional Knowledge.
+
+# Remove missing Values
+
+df = df.dropna()
+
+import patsy
+
+
 
 
 
