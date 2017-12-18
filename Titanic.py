@@ -270,6 +270,8 @@ df = df.dropna()
 
 import patsy
 
+formula = 'Survived ~ C(Pclass) + C(Sex) + Age + SibSp + C(Embarked) + Parch'
+
 
 
 
