@@ -272,6 +272,31 @@ import patsy
 
 formula = 'Survived ~ C(Pclass) + C(Sex) + Age + SibSp + C(Embarked) + Parch'
 
+# Creating a results dictionary to hold our data regression.
+
+train = df.iloc[0:600, :]
+test = df.iloc[600:, :]
+
+# Splitting the data into dependent and independent variable
+
+y_train, x_train = patsy.dmatrices(formula, data = train,
+                                   return_type = 'dataframe')
+                                   
+y_test, x_test = patsy.dmatrices(formula, data = test,
+                                 return_type = 'dataframe')
+                                   
+
+# Building a Model
+
+import statsmodels.formula.api as sm
+
+model = sm.Logit(y_train, x_train)
+res = model.fit()
+print(res.summary())
+
+
+                                 
+                                 
 
 
 
