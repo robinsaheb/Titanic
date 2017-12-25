@@ -330,6 +330,45 @@ plt.show()
 # Distribution is mostly dense btw 0 and 1 which means most people did not survive.
 
 
+# Evaluating wrt to Gender
+sns.regplot(kde_res, x_train['C(Sex)[T.male]'])
+plt.xlabel('Predicted Survivor')
+plt.ylabel('Male Gender')
+plt.title('Predicting the Survivors of Males')
+plt.show()
+# This shows that the survivor chances of male passengers is less than female passengers.
+
+
+# Evaluating wrt to Class == 3
+sns.regplot(res.predict(), x_train['C(Pclass)[T.3]'])
+plt.xlabel('Predicted Chances of Survivors')
+plt.ylabel('Class 3')
+plt.title('Predicted Chances of Survivors of Class 3')
+plt.show()
+# This shows that the chances of Survival of Class 3 is less than other classes.
+
+
+# Evaluating wrt to Age
+sns.regplot(res.predict(), x_train['Age'])
+plt.xlabel('Chances of Survival')
+plt.ylabel('Age')
+plt.title('Percentage of Survival wrt Age')
+plt.show()
+# This shows that older people have lower probability of Survival.
+
+
+# Evaluating wrt Number of Siblings/Spouces
+sns.regplot(res.predict(), x_train['SibSp'])
+plt.xlabel('Chances of Survival')
+plt.ylabel('Number of Siblings/Spouse')
+plt.title('Predicting Survival wrt to Number of Spouse or Siblings')
+plt.show()
+
+
+# Evaluating based on Test Data.
+
+
+
 
 
 
