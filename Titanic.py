@@ -294,6 +294,10 @@ model = sm.Logit(y_train, x_train)
 res = model.fit()
 print(res.summary())
 
+# Pseduo R value between 0.2 and 0.4 is considered to be good. And we got 0.323
+# Pseudo R is the correlation between actual and predicted values. Gets values between 0 and 1.
+
+
 
                                  
                                  
