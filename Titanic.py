@@ -297,10 +297,44 @@ print(res.summary())
 # Pseduo R value between 0.2 and 0.4 is considered to be good. And we got 0.323
 # Pseudo R is the correlation between actual and predicted values. Gets values between 0 and 1.
 
+""" 
+Also we see that the number of children/parents is of significant importance as
+the value of p is greater than 0.05(parch). We will rebuild the model not using parch.
+"""
+
+formula2 = 'Survived ~ C(Pclass) + C(Sex) + SibSp + Age'
+
+train = df.iloc[0:600, :]
+test = df.iloc[600:, :]
+
+y_train, x_train = patsy.dmatrices(formula2, data = train, 
+                                   return_type = 'dataframe')
+
+y_test, x_test = patsy.dmatrices(formula2, data = test, 
+                                 return_type = 'dataframe')       
+                                 
+# Instatenous Model
+
+model = sm.Logit(y_train, x_train)
+res = model.fit()
+print(res.summary())
+                                 
+# Model Evaluation.
+
+import seaborn as sns
+
+kde_res = res.predict()
+sns.kdeplot(kde_res, shade = True, color = 'b')
+plt.title('Distribution of Our Prediction ')
+plt.show()
+# Distribution is mostly dense btw 0 and 1 which means most people did not survive.
 
 
-                                 
-                                 
+
+
+
+
+                             
 
 
 
