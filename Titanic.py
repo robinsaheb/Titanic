@@ -21,6 +21,7 @@ Questions we will try and answer :
 import pandas as pd
 import pylab as plt
 import numpy as np
+from pandas import crosstab as crosstab
 
 df = pd.read_csv('/Users/sahebsingh/Desktop/Projects/books/Mastering/Data/titanic data.csv')
 print(df.head())
@@ -282,7 +283,7 @@ test = df.iloc[600:, :]
 y_train, x_train = patsy.dmatrices(formula, data = train,
                                    return_type = 'dataframe')
                                    
-y_test, x_test = patsy.dmatrices(formula, data = test,
+y_test,x_test = patsy.dmatrices(formula, data = train,
                                  return_type = 'dataframe')
                                    
 
@@ -322,6 +323,7 @@ print(res.summary())
 # Model Evaluation.
 
 import seaborn as sns
+from sklearn.metrics import classification_report
 
 kde_res = res.predict()
 sns.kdeplot(kde_res, shade = True, color = 'b')
@@ -366,6 +368,18 @@ plt.show()
 
 
 # Evaluating based on Test Data.
+
+y_pred = res.predict(x_test)
+y_pred_flag = y_pred > 0.7
+print(pd.crosstab(y_test.Survived
+                  ,y_pred_flag
+                  ,rownames = ['Actual']
+                  ,colnames = ['Predicted']))
+print('\n \n')
+print(classification_report(y_test, y_pred_flag))
+print(y_test.Survived)
+
+
 
 
 
