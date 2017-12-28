@@ -396,7 +396,36 @@ plt.ylabel('True Positive Rate')
 plt.legend(loc = 'lower right')
 plt.show()
 
+""" This is bonus code. Making the model using scikit. """
 
+from sklearn.linear_model import LogisticRegression
+
+model = LogisticRegression()
+model = model.fit(x_train, y_train.Survived)
+y_pred = model.predict_proba(x_test)
+y_pred_flag = y_pred[:, 1] > 0.7
+print(pd.crosstab(y_test.Survived
+                  ,y_pred_flag
+                  ,rownames = ['Actual']
+                  ,colnames = ['Predicted']))
+print('/n')
+print(classification_report(y_test,y_pred_flag))
+
+# Plotting the ROC Curve
+
+fpr, tpr, threshold = roc_curve(y_test, y_pred[:, 1])
+roc_auc = auc(fpr, tpr)
+print("Area under the ROC is %f" %roc_auc)# Area of this ROC curve is less than Previous One
+
+# Plotting the ROC Curve
+
+plt.plot(fpr, tpr, label = 'Area under the Curve %f' %roc_auc)
+plt.plot([0, 1], [0, 1], 'k--')
+plt.xlabel('False Positive Rate')
+plt.ylabel('True Positive Rate')
+plt.title('ROC Curve')
+plt.legend(loc = 'lower right')
+plt.show()
 
 
 
