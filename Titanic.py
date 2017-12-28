@@ -22,6 +22,7 @@ import pandas as pd
 import pylab as plt
 import numpy as np
 from pandas import crosstab as crosstab
+from sklearn.metrics import roc_curve, auc
 
 df = pd.read_csv('/Users/sahebsingh/Desktop/Projects/books/Mastering/Data/titanic data.csv')
 print(df.head())
@@ -377,7 +378,30 @@ print(pd.crosstab(y_test.Survived
                   ,colnames = ['Predicted']))
 print('\n \n')
 print(classification_report(y_test, y_pred_flag))
-print(y_test.Survived)
+
+# Plotting Reciever Operating Characterstic Curve or ROC Curve and Area Under Curve
+
+fpr, tpr, threshold = roc_curve(y_test, y_pred) # Getting Roc Curve.
+roc_auc = auc(fpr, tpr) # Area under curve.
+print("Area under Roc Curve is %f" %roc_auc)
+
+# Plotting ROC Curve
+
+plt.plot(fpr, tpr, label = "Area under the ROC  %0.2f" %roc_auc)
+plt.title("ROC Curve")
+plt.plot([0, 1], [0, 1], 'k--')
+plt.title("Reciever Operating Characterstic Curve Example")
+plt.xlabel('False Positive Rate')
+plt.ylabel('True Positive Rate')
+plt.legend(loc = 'lower right')
+plt.show()
+
+
+
+
+
+
+
 
 
 
